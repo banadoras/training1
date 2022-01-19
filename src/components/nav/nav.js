@@ -11,7 +11,7 @@ export default function Nav({ user }) {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/protected">Profile</Link>
+        <Link to="/protected">Protected</Link>
       </li>
       {!user && (
         <li>
