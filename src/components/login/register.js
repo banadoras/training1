@@ -2,13 +2,18 @@ import { auth } from "../firebase/firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import useStorage from "../firebase/useStorage";
 
 export default function Register() {
   const [result, setResult] = useState("");
+  const [file, setFile] = useState(null);
+  const { url, error, progress } = useStorage(file);
+
   const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
+
     createUserWithEmailAndPassword(
       auth,
       e.target.email.value,
@@ -16,7 +21,10 @@ export default function Register() {
     )
       .then((userCredential) => {
         const user = userCredential.user;
-        updateProfile(auth.currentUser, { displayName: e.target.name.value })
+        updateProfile(auth.currentUser, {
+          displayName: e.target.name.value,
+          photoURL: url
+        })
           .then(() => {
             navigate("/protected");
           })
@@ -33,6 +41,13 @@ export default function Register() {
     <div>
       <h4>Register</h4>
       <form onSubmit={handleSubmit}>
+        <input
+          type="file"
+          name="photo"
+          onChange={(e) => {
+            setFile(e.target.files[0]);
+          }}
+        />
         <input type="text" name="name" placeholder="Name" />
         <input type="email" name="email" placeholder="Email" />
         <input type="password" name="password" placeholder="Password" />

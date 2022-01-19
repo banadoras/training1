@@ -23,7 +23,16 @@ export default function Nav({ user }) {
           <Link to="/register">Register</Link>
         </li>
       )}
-      {user && <li>Welcome {auth.currentUser.displayName}!</li>}
+      {user && (
+        <li>
+          <img
+            style={{ height: "20px" }}
+            src={auth.currentUser.photoURL}
+            alt="user"
+          />{" "}
+          Welcome {auth.currentUser.displayName}!
+        </li>
+      )}
       {user && (
         <li>
           <Link
