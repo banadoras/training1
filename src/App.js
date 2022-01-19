@@ -19,7 +19,7 @@ export default function App() {
         setUser(null);
       }
     });
-  });
+  }, []);
   return (
     <div className="App">
       <Nav user={user} />

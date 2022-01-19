@@ -23,6 +23,7 @@ export default function Nav({ user }) {
           <Link to="/register">Register</Link>
         </li>
       )}
+      {user && <li>Welcome {auth.currentUser.displayName}!</li>}
       {user && (
         <li>
           <Link
