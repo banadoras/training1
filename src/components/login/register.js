@@ -20,7 +20,7 @@ export default function Register() {
       e.target.password.value
     )
       .then((userCredential) => {
-        const user = userCredential.user;
+        //const user = userCredential.user;
         updateProfile(auth.currentUser, {
           displayName: e.target.name.value,
           photoURL: url
@@ -48,6 +48,7 @@ export default function Register() {
             setFile(e.target.files[0]);
           }}
         />
+        <p>{error}</p>
         <input type="text" name="name" placeholder="Name" />
         <input type="email" name="email" placeholder="Email" />
         <input type="password" name="password" placeholder="Password" />

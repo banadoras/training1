@@ -13,14 +13,10 @@ export default function Nav({ user }) {
       <li>
         <Link to="/protected">Protected</Link>
       </li>
+
       {!user && (
         <li>
-          <Link to="/login">Login</Link>
-        </li>
-      )}
-      {!user && (
-        <li>
-          <Link to="/register">Register</Link>
+          <Link to="/login">Login</Link> /<Link to="/register"> Register</Link>
         </li>
       )}
       {user && (
