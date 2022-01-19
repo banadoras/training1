@@ -22,7 +22,12 @@ export default function Nav({ user }) {
       {user && (
         <li>
           <img
-            style={{ height: "20px" }}
+            style={{
+              height: "20px",
+              width: "20px",
+              objectFit: "cover",
+              borderRadius: "50%"
+            }}
             src={auth.currentUser.photoURL}
             alt="user"
           />{" "}
