@@ -21,17 +21,18 @@ export default function Nav({ user }) {
       )}
       {user && (
         <li>
-          <img
-            style={{
-              height: "20px",
-              width: "20px",
-              objectFit: "cover",
-              borderRadius: "50%"
-            }}
-            src={auth.currentUser.photoURL}
-            alt="user"
-          />{" "}
-          Welcome {auth.currentUser.displayName}!
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <img
+              style={{
+                height: "40px",
+                borderRadius: "5px",
+                marginRight: "10px"
+              }}
+              src={auth.currentUser.photoURL}
+              alt="user"
+            />{" "}
+            <p>Welcome {auth.currentUser.displayName}!</p>
+          </div>
         </li>
       )}
       {user && (
