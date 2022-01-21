@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useStorage from "../firebase/useStorage";
+import storeUserPhoto from "../firebase/storePhoto";
 
 export default function Register() {
   const [result, setResult] = useState("");
@@ -13,6 +14,9 @@ export default function Register() {
 
   function handleSubmit(e) {
     e.preventDefault();
+
+    //const { url, error, progress } = storeUserPhoto(file);
+    console.log(url);
 
     createUserWithEmailAndPassword(
       auth,
