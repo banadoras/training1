@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useStorage from "../firebase/useStorage";
 import storeUserPhoto from "../firebase/storePhoto";
+import { db } from "../firebase/firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function Register() {
   const [result, setResult] = useState("");
@@ -11,6 +13,15 @@ export default function Register() {
   const { url, error, progress } = useStorage(file);
 
   const navigate = useNavigate();
+
+  async function saveUserToFirestore(person, id) {
+    await setDoc(doc(db, "people", id), {
+      name: person.name,
+      email: person.email,
+      password: person.password,
+      photo: person.photo
+    });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -25,6 +36,13 @@ export default function Register() {
     )
       .then((userCredential) => {
         //const user = userCredential.user;
+        const person = {
+          name: e.target.name.value,
+          email: e.target.email.value,
+          password: "******",
+          photo: url
+        };
+        saveUserToFirestore(person, userCredential.user.uid);
         updateProfile(auth.currentUser, {
           displayName: e.target.name.value,
           photoURL: url
