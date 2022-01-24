@@ -5,13 +5,14 @@ import "./nav.css";
 
 export default function Nav({ user }) {
   const navigate = useNavigate();
+
   return (
     <ul className="nav">
       <li>
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/protected">Protected</Link>
+        <Link to="/protected">Profile</Link>
       </li>
 
       {!user && (
@@ -42,7 +43,10 @@ export default function Nav({ user }) {
             onClick={(e) => {
               e.preventDefault();
               signOut(auth)
+                //setuser to null
+
                 .then(() => {
+                  //setUser(null);
                   navigate("/");
                 })
                 .catch((error) => {});

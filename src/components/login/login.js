@@ -15,7 +15,7 @@ export default function Login() {
       e.target.password.value
     )
       .then((userCredential) => {
-        const user = userCredential.user;
+        //const user = userCredential.user;
 
         navigate("/protected");
       })

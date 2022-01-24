@@ -13,16 +13,16 @@ import { db } from "./components/firebase/firebase";
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const [loggedinUser, setLoggedinUser] = useState(null);
 
   async function getLoggedinUserData(id) {
-    getDoc(doc(db, "people", String(id))).then((docSnap) => {
+    getDoc(doc(db, "people", id)).then((docSnap) => {
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        setUser(docSnap.data());
+        //setUser(docSnap.data());
+        setLoggedinUser(docSnap.data());
       } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
-        return null;
       }
     });
   }
@@ -30,16 +30,11 @@ export default function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        getLoggedinUserData(user.uid)
-          .then((loggedinUser) => {
-            setUser(loggedinUser);
-            console.log(loggedinUser);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+        setUser(user);
+        getLoggedinUserData(user.uid);
       } else {
         setUser(null);
+        //setLoggedinUser(null)
       }
     });
   }, []);
@@ -53,7 +48,7 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route
           path="/protected"
-          element={user ? <Protected loggedinUser={user} /> : <Login />}
+          element={user ? <Protected loggedinUser={loggedinUser} /> : <Login />}
         />
       </Routes>
     </div>

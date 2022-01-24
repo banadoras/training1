@@ -6,6 +6,7 @@ import useStorage from "../firebase/useStorage";
 import storeUserPhoto from "../firebase/storePhoto";
 import { db } from "../firebase/firebase";
 import { doc, setDoc } from "firebase/firestore";
+import "./register.css";
 
 export default function Register() {
   const [result, setResult] = useState("");
@@ -60,7 +61,7 @@ export default function Register() {
   }
 
   return (
-    <div>
+    <div className="register">
       <h4>Register</h4>
       <form onSubmit={handleSubmit}>
         <input

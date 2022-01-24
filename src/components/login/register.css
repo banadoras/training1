@@ -1,0 +1,23 @@
+.register > form {
+  min-width: 15rem;
+  max-width: 20rem;
+
+  margin: auto;
+}
+
+.register > form > input {
+  display: block;
+  margin: 2px auto;
+  padding: 10px;
+  width: 80%;
+  box-sizing: content-box;
+}
+
+.register > form > button {
+  display: block;
+  margin-top: 2px;
+  padding: 10px;
+  width: 80%;
+  margin: auto;
+  box-sizing: content-box;
+}
