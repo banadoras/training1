@@ -2,6 +2,7 @@ import { auth } from "../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "./login.css";
 
 export default function Login() {
   const [result, setResult] = useState("");
@@ -25,7 +26,7 @@ export default function Login() {
   }
 
   return (
-    <div>
+    <div className="register">
       <h4>Login</h4>
       <form onSubmit={handleSubmit}>
         <input type="email" name="email" placeholder="Email" />

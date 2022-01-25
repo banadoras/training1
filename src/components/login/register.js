@@ -3,7 +3,6 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import useStorage from "../firebase/useStorage";
-import storeUserPhoto from "../firebase/storePhoto";
 import { db } from "../firebase/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import "./register.css";
@@ -72,7 +71,7 @@ export default function Register() {
           }
           alt="profile"
         />
-        <label for="file-photo">Upload Photo</label>
+        <label htmlFor="file-photo">Upload Photo</label>
         <input
           id="file-photo"
           type="file"
@@ -81,6 +80,12 @@ export default function Register() {
             setFile(e.target.files[0]);
           }}
         />
+        <div>
+          <progress
+            max="100"
+            value={isNaN(progress) ? 0 : progress * 100}
+          ></progress>
+        </div>
         <p>{error}</p>
         <input type="text" name="name" placeholder="Name" />
         <input type="email" name="email" placeholder="Email" />
