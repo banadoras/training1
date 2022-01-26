@@ -32,7 +32,7 @@ export default function Details() {
           <div className="images">
             {procedure.urls.map((url, index) => {
               return (
-                <div>
+                <div key={index}>
                   <img src={url} alt="proc" />
                 </div>
               );

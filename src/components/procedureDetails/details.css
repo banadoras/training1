@@ -1,7 +1,9 @@
 .details img {
   height: 100px;
+  border-radius: 10px;
 }
 
 .images > div {
   display: inline-block;
+  margin: 10px;
 }
