@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Login from "./components/login/login";
 import Register from "./components/login/register";
 import Nav from "./components/nav/nav";
@@ -49,9 +49,19 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route
           path="/protected"
-          element={user ? <Protected loggedinUser={loggedinUser} /> : <Login />}
+          element={
+            user ? (
+              <Protected loggedinUser={loggedinUser} />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
-        <Route path="/procedures/:id" element={<Details />} />
+        <Route
+          path="/procedures/:id"
+          element={user ? <Details /> : <Navigate to="/login" />}
+        />
+        <Route path="/*" element={<h1>Error 404: Page not found</h1>} />
       </Routes>
     </div>
   );

@@ -26,24 +26,21 @@ export default function Details() {
   }, []);
 
   return (
-    <div className="details">
-      {procedure && (
-        <div>
-          <div className="images">
-            {procedure.urls.map((url, index) => {
-              return (
-                <div key={index}>
-                  <img src={url} alt="proc" />
-                </div>
-              );
-            })}
-          </div>
-
-          <h4>{procedure.title}</h4>
-          <p>{procedure.description}</p>
-          <h2>{procedure.id}</h2>
+    procedure && (
+      <div className="details">
+        <div className="images">
+          {procedure.urls.map((url, index) => {
+            return (
+              <div key={index}>
+                <img src={url} alt="proc" />
+              </div>
+            );
+          })}
         </div>
-      )}
-    </div>
+        <h4>{procedure.title}</h4>
+        <p>{procedure.description}</p>
+        <h2>{procedure.id}</h2>
+      </div>
+    )
   );
 }

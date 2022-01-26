@@ -1,12 +1,14 @@
 import { auth } from "../firebase/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./login.css";
+import { ErrorContext } from "../contexts/errorContext";
 
 export default function Login() {
   const [result, setResult] = useState("");
   const navigate = useNavigate();
+  const [error, setError] = useContext(ErrorContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,8 +19,12 @@ export default function Login() {
     )
       .then((userCredential) => {
         //const user = userCredential.user;
-
-        navigate("/protected");
+        if (error) {
+          navigate("/procedures/" + error.loc);
+          setError(null);
+        } else {
+          navigate("/protected");
+        }
       })
       .catch((error) => {
         setResult(error.code + ":" + error.message);
@@ -37,6 +43,7 @@ export default function Login() {
         Not a meember? <Link to="/register">Register</Link>
       </p>
       <p>{result}</p>
+      <p>{error && error.message}</p>
     </div>
   );
 }
