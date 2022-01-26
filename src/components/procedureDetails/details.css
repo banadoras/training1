@@ -1,0 +1,7 @@
+.details img {
+  height: 100px;
+}
+
+.images > div {
+  display: inline-block;
+}

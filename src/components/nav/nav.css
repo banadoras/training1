@@ -8,3 +8,7 @@
 .nav > li {
   margin: 1rem;
 }
+
+.active {
+  color: brown;
+}

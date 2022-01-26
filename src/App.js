@@ -10,6 +10,7 @@ import Landing from "./components/landing/landing";
 import Protected from "./components/protected/protected";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "./components/firebase/firebase";
+import Details from "./components/procedureDetails/details";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -50,6 +51,7 @@ export default function App() {
           path="/protected"
           element={user ? <Protected loggedinUser={loggedinUser} /> : <Login />}
         />
+        <Route path="/procedures/:id" element={<Details />} />
       </Routes>
     </div>
   );

@@ -1,0 +1,11 @@
+.card {
+  width: 15rem;
+  padding: 5px;
+  box-shadow: 1px 1px 5px 1px rgb(206, 206, 206);
+  margin: 1rem;
+  display: inline-block;
+}
+
+.card > img {
+  width: 100%;
+}

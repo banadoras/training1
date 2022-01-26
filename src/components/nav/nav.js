@@ -1,18 +1,26 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./nav.css";
 
 export default function Nav({ user }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <ul className="nav">
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/" className={location.pathname === "/" ? "active" : ""}>
+          Home
+        </Link>
       </li>
       <li>
-        <Link to="/protected">Profile</Link>
+        <Link
+          to="/protected"
+          className={location.pathname === "/protected" ? "active" : ""}
+        >
+          Profile
+        </Link>
       </li>
 
       {!user && (
@@ -56,6 +64,8 @@ export default function Nav({ user }) {
           </Link>
         </li>
       )}
+
+      <li>you're at: {location.pathname}</li>
     </ul>
   );
 }
