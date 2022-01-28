@@ -3,9 +3,9 @@ import { createContext, useState } from "react";
 const ErrorContext = createContext();
 
 const ErrorProvider = function (props) {
-  const [error, setError] = useState(null);
+  const [loginError, setError] = useState(null);
   return (
-    <ErrorContext.Provider value={[error, setError]}>
+    <ErrorContext.Provider value={[loginError, setError]}>
       {props.children}
     </ErrorContext.Provider>
   );

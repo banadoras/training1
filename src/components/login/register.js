@@ -1,17 +1,18 @@
 import { auth } from "../firebase/firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import useStorage from "../firebase/useStorage";
 import { db } from "../firebase/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import "./register.css";
+import { ErrorContext } from "../contexts/errorContext";
 
 export default function Register() {
   const [result, setResult] = useState("");
   const [file, setFile] = useState(null);
   const { url, error, progress } = useStorage(file);
-
+  const [loginError, setError] = useContext(ErrorContext);
   const navigate = useNavigate();
 
   async function saveUserToFirestore(person, id) {
@@ -48,7 +49,13 @@ export default function Register() {
           photoURL: url
         })
           .then(() => {
-            navigate("/protected");
+            if (loginError) {
+              navigate("/procedures/" + loginError.loc);
+              setError(null);
+            } else {
+              navigate("/protected");
+            }
+            //navigate("/protected");
           })
           .catch((e) => {
             setResult(e);
@@ -96,6 +103,7 @@ export default function Register() {
         Already a member? <Link to="/login">Log in</Link>
       </p>
       <p>{result}</p>
+      <p>{loginError && loginError.message}</p>
     </div>
   );
 }

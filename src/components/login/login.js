@@ -8,7 +8,7 @@ import { ErrorContext } from "../contexts/errorContext";
 export default function Login() {
   const [result, setResult] = useState("");
   const navigate = useNavigate();
-  const [error, setError] = useContext(ErrorContext);
+  const [loginError, setError] = useContext(ErrorContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -19,8 +19,8 @@ export default function Login() {
     )
       .then((userCredential) => {
         //const user = userCredential.user;
-        if (error) {
-          navigate("/procedures/" + error.loc);
+        if (loginError) {
+          navigate("/procedures/" + loginError.loc);
           setError(null);
         } else {
           navigate("/protected");
@@ -43,7 +43,7 @@ export default function Login() {
         Not a meember? <Link to="/register">Register</Link>
       </p>
       <p>{result}</p>
-      <p>{error && error.message}</p>
+      <p>{loginError && loginError.message}</p>
     </div>
   );
 }
