@@ -16,6 +16,14 @@ export default function Nav({ user }) {
       </li>
       <li>
         <Link
+          to="/add"
+          className={location.pathname === "/add" ? "active" : ""}
+        >
+          Add
+        </Link>
+      </li>
+      <li>
+        <Link
           to="/protected"
           className={location.pathname === "/protected" ? "active" : ""}
         >

@@ -103,7 +103,7 @@ export default function Register() {
         Already a member? <Link to="/login">Log in</Link>
       </p>
       <p>{result}</p>
-      <p>{loginError && loginError.message}</p>
+      <p style={{ color: "darkred" }}>{loginError && loginError.message}</p>
     </div>
   );
 }

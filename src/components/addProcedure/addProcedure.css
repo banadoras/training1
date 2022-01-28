@@ -1,0 +1,47 @@
+.add-procedure > input[type="file"] {
+  display: none;
+}
+
+.add-procedure > label {
+  border: solid grey 1px;
+  padding: 5px;
+  color: grey;
+  width: 20rem;
+  display: block;
+  margin: auto;
+  box-sizing: content-box;
+}
+
+.proc-photos {
+  border: solid grey 1px;
+  height: 200px;
+  width: 20rem;
+  margin: auto;
+  padding: 5px;
+  color: rgb(173, 172, 172);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-procedure > div {
+  margin-top: 10px;
+}
+
+.add-procedure input[type="text"],
+textarea {
+  width: 20rem;
+  padding: 5px;
+}
+
+.add-procedure textarea {
+  height: 400px;
+}
+
+.add-procedure button {
+  width: 20rem;
+  display: block;
+  margin: 10px auto;
+  padding: 10px 5px;
+  box-sizing: content-box;
+}

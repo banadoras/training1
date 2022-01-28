@@ -11,6 +11,7 @@ import Protected from "./components/protected/protected";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "./components/firebase/firebase";
 import Details from "./components/procedureDetails/details";
+import AddProcedure from "./components/addProcedure/addProcedure";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -45,6 +46,7 @@ export default function App() {
       <Nav user={user} />
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/add" element={<AddProcedure />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route

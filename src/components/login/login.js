@@ -43,7 +43,7 @@ export default function Login() {
         Not a meember? <Link to="/register">Register</Link>
       </p>
       <p>{result}</p>
-      <p>{loginError && loginError.message}</p>
+      <p style={{ color: "darkred" }}>{loginError && loginError.message}</p>
     </div>
   );
 }
